@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
 /**
  *  The {@code IndexMinPQ} class represents an indexed priority queue of generic keys.
  *  It supports the usual <em>insert</em> and <em>delete-the-minimum</em>
- *  operations, along with <em>delete</em> and <em>change-the-key</em> 
+ *  operations, along with <em>delete</em> and <em>change-the-key</em>
  *  methods. In order to let the client refer to keys on the priority queue,
  *  an integer between {@code 0} and {@code maxN - 1}
  *  is associated with each key—the client uses this integer to specify
@@ -274,10 +274,14 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
     * Heap helper functions.
     ***************************************************************************/
     private void swim(int k) {
-        while (k > 1 && greater(k/2, k)) {
-            exch(k, k/2);
-            k = k/2;
+        for(int i = k / 2; i > 0 && greater(i, k);i = k/2){
+            exch(k, i);
+            k = i;
         }
+//        while (k > 1 && greater(k/2, k)) {
+//            exch(k, k/2);
+//            k = k/2;
+//        }
     }
 
     private void sink(int k) {

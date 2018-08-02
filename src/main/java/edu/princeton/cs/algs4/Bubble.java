@@ -26,59 +26,63 @@ package edu.princeton.cs.algs4;
 import java.util.Comparator;
 
 /**
- *  The {@code Selection} class provides static methods for sorting an
- *  array using selection sort.
- *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ * The {@code Selection} class provides static methods for sorting an
+ * array using selection sort.
+ * <p>
+ * For additional documentation, see <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
+ * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
+ * @author Robert Sedgewick
+ * @author Kevin Wayne
  */
-public class Selection {
+public class Bubble {
 
     // This class should not be instantiated.
-    private Selection() { }
+    private Bubble() {
+    }
 
     /**
      * Rearranges the array in ascending order, using the natural order.
+     *
      * @param a the array to be sorted
      */
     public static void sort(Comparable[] a) {
         int n = a.length;
         for (int i = 0; i < n; i++) {
-            int min = i;
-            for (int j = i+1; j < n; j++) {
-                if (less(a[j], a[min])) min = j;
+            for (int j = 1; j < n - i; j++) {
+                if (less(a[j], a[j - 1])) {
+                    exch(a, j - 1, j);
+                }
             }
-            exch(a, i, min);
-            assert isSorted(a, 0, i);
+
+            assert isSorted(a, n - i - 1, n - 1);
         }
         assert isSorted(a);
     }
 
     /**
      * Rearranges the array in ascending order, using a comparator.
-     * @param a the array
+     *
+     * @param a          the array
      * @param comparator the comparator specifying the order
      */
     public static void sort(Object[] a, Comparator comparator) {
         int n = a.length;
         for (int i = 0; i < n; i++) {
-            int min = i;
-            for (int j = i+1; j < n; j++) {
-                if (less(comparator, a[j], a[min])) min = j;
+            for (int j = 1; j < n-i; j++) {
+                if (less(comparator, a[j], a[j-1])) {
+                    exch(a, j - 1, j);
+                }
             }
-            exch(a, i, min);
-            assert isSorted(a, comparator, 0, i);
+            assert isSorted(a, comparator, n - i - 1, n - 1);
         }
         assert isSorted(a, comparator);
     }
 
 
-   /***************************************************************************
-    *  Helper sorting functions.
-    ***************************************************************************/
+    /***************************************************************************
+     *  Helper sorting functions.
+     ***************************************************************************/
 
     // is v < w ?
     private static boolean less(Comparable v, Comparable w) {
@@ -99,9 +103,9 @@ public class Selection {
     }
 
 
-   /***************************************************************************
-    *  Check if array is sorted - useful for debugging.
-    ***************************************************************************/
+    /***************************************************************************
+     *  Check if array is sorted - useful for debugging.
+     ***************************************************************************/
 
     // is the array a[] sorted?
     private static boolean isSorted(Comparable[] a) {
@@ -111,7 +115,7 @@ public class Selection {
     // is the array sorted from a[lo] to a[hi]
     private static boolean isSorted(Comparable[] a, int lo, int hi) {
         for (int i = lo + 1; i <= hi; i++)
-            if (less(a[i], a[i-1])) return false;
+            if (less(a[i], a[i - 1])) return false;
         return true;
     }
 
@@ -123,10 +127,9 @@ public class Selection {
     // is the array sorted from a[lo] to a[hi]
     private static boolean isSorted(Object[] a, Comparator comparator, int lo, int hi) {
         for (int i = lo + 1; i <= hi; i++)
-            if (less(comparator, a[i], a[i-1])) return false;
+            if (less(comparator, a[i], a[i - 1])) return false;
         return true;
     }
-
 
 
     // print array to standard output
@@ -143,8 +146,8 @@ public class Selection {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        String[] a = {"fsdf", "f","ewqedwe2", "e23wded", "dxwe", "213"};
-        Selection.sort(a);
+        String[] a = {"fsdf", "f", "ewqedwe2", "e23wded", "dxwe", "213"};
+        Bubble.sort(a);
         show(a);
     }
 }

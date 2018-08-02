@@ -3,7 +3,7 @@
  *  Execution:    java DoublingTest
  *  Dependencies: ThreeSum.java Stopwatch.java StdRandom.java StdOut.java
  *
- *  % java DoublingTest 
+ *  % java DoublingTest
  *      250     0.0
  *      500     0.0
  *     1000     0.1
@@ -45,7 +45,7 @@ public class DoublingTest {
             a[i] = StdRandom.uniform(-MAXIMUM_INTEGER, MAXIMUM_INTEGER);
         }
         Stopwatch timer = new Stopwatch();
-        ThreeSum.count(a);
+        ThreeSumFast.count(a);
         return timer.elapsedTime();
     }
 
@@ -55,12 +55,12 @@ public class DoublingTest {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) { 
+    public static void main(String[] args) {
         for (int n = 250; true; n += n) {
             double time = timeTrial(n);
             StdOut.printf("%7d %7.1f\n", n, time);
-        } 
-    } 
+        }
+    }
 }
 
 /******************************************************************************
