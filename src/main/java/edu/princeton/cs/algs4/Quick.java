@@ -28,7 +28,8 @@
 
 package edu.princeton.cs.algs4;
 
-import static edu.princeton.cs.algs4.Merge.splitStrInChars;
+
+import static edu.princeton.cs.algs4.util.CommonUtils.splitStrInChars;
 
 /**
  * The {@code Quick} class provides static methods for sorting an

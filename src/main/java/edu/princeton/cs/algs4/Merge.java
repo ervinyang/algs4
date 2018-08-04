@@ -23,6 +23,8 @@
 
 package edu.princeton.cs.algs4;
 
+import static edu.princeton.cs.algs4.util.CommonUtils.splitStrInChars;
+
 /**
  * The {@code Merge} class provides static methods for sorting an
  * array using mergesort.
@@ -228,14 +230,6 @@ public class Merge {
         show(a1);
     }
 
-    public static String[] splitStrInChars(String testCasesInStr) {
-        String[] result = new String[testCasesInStr.length()];
-        char[] testCasesInChars = testCasesInStr.toCharArray();
-        for (int i = 0; i < testCasesInStr.length(); i++) {
-            result[i] = String.valueOf(testCasesInChars[i]);
-        }
-        return result;
-    }
 }
 
 /******************************************************************************
