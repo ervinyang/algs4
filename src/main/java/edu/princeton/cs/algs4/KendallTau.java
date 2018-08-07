@@ -11,6 +11,8 @@ import java.util.function.Function;
  *  Generate two random permutations of size N and compute their
  *  Kendall tau distance (number of inversions).
  *
+ * @link http://shmilyaw-hotmail-com.iteye.com/blog/2275113
+ * @link https://algs4.cs.princeton.edu/25applications/KendallTau.java.html
  ******************************************************************************/
 
 public class KendallTau {
